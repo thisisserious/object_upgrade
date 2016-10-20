@@ -43,8 +43,9 @@ var jem = new Person('Jem', 62347, 63500, 4);
 var boo = new Person('Boo', 11435, 54000, 3);
 var scout = new Person('Scout', 6243, 74750, 5);
 
+var i = 0;
 var employees = [atticus, jem, boo, scout];
-
+console.log('Employees array:', employees[i].salary);
 // The original employees array that was used to store each person does not need
 // to be converted to an object. Meaning that you can put your new Person
 // objects inside of an array.
@@ -54,7 +55,7 @@ var employees = [atticus, jem, boo, scout];
 // futzing with trying to access the employees array correctly.
 
 function calculator() {
-  for (var i = 0; i < this.length; i++) {
+  for (var i = 0; i < employees.length; i++) {
     var rate = 0;
     switch (this.rating) {
     case 5: rate = .1;
@@ -66,11 +67,14 @@ function calculator() {
     default: rate = 0;
       break;
   }
-    if (this.empNum.length == 4) {
+    console.log('this:', this);
+    var empNum = this.empNum;
+    console.log('empNum:', empNum);
+    if (empNum.length == 4) {
       rate += .05;
     }
 
-    var salary = this.salary;
+    var salary = this[i].salary;
     if (salary > 65000) {
       rate -= .01;
     }
@@ -79,14 +83,14 @@ function calculator() {
       rate = .13;
     }
 
-    var empName = this.name;
+    var empName = this[i].name;
     var bonus = Math.round(rate * salary);
     var employeeBonus = [];
     employeeBonus[0] = empName;
     employeeBonus[1] = rate;
     employeeBonus[2] = salary + bonus;
     employeeBonus[3] = bonus;
-    console.log(employeeBonus);
+    console.log('inside calculator function', employeeBonus);
   }
 }
 
