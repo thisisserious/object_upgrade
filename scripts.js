@@ -1,36 +1,3 @@
-//var atticus = {
-// //   name: 'Atticus',
-// //   empNum: '2405',
-// //   salary: 47000,
-// //   rating: 3,
-// // };
-
-// var jem = {
-//   name: 'Jem',
-//   empNum: '62347',
-//   salary: 63500,
-//   rating: 4,
-// };//
-
-// var boo = {
-//   name: 'Boo',
-//   empNum: '11435',
-//   salary: 54000,
-//   rating: 3,
-// };
-
-// var scout = {
-//   name: 'Scout',
-//   empNum: '6243',
-//   salary: 74750,
-//   rating: 5,
-// };
-
-// Each employee array should become an instance of an object (probably called
-// something like Person). I tried a constructor function first but then made
-// individual object literals but couldn't get that to work so I then went back
-// to the constructor which is below.
-
 function Person(name, empNum, salary, rating) {
   this.name = name;
   this.empNum = empNum;
@@ -44,21 +11,12 @@ var boo = new Person('Boo', 11435, 54000, 3);
 var scout = new Person('Scout', 6243, 74750, 5);
 
 var employees = [atticus, jem, boo, scout];
-console.log('Employees array:', employees);
-// console.log('Employee salary:', employees[i].salary);
-
-// The original employees array that was used to store each person does not need
-// to be converted to an object. Meaning that you can put your new Person
-// objects inside of an array.
-//
-// This will also mean that you need to adjust the rest of the logic to accept
-// properties rather than array index. This is where I've been struggling and
-// futzing with trying to access the employees array correctly.
+// console.log('Employees array:', employees);
 
 function calculator() {
   for (var i = 0; i < employees.length; i++) {
     var rate = 0;
-    switch (employees.rating) {
+    switch (employees[i].rating) {
     case 5: rate = .1;
       break;
     case 4: rate = .06;
@@ -68,9 +26,9 @@ function calculator() {
     default: rate = 0;
       break;
   }
-    // console.log('this:', this);
+    // console.log('rate:', rate);
     var empNum = employees[i].empNum.toString();
-    console.log('empNum length:', empNum.length);
+    // console.log('empNum length:', empNum.length);
     if (empNum.length == 4) {
       rate += .05;
     }
@@ -91,7 +49,7 @@ function calculator() {
     employeeBonus[1] = rate;
     employeeBonus[2] = salary + bonus;
     employeeBonus[3] = bonus;
-    console.log('inside calculator function:', employeeBonus);
+    console.log('Employee Bonus:', employeeBonus);
   }
 }
 
